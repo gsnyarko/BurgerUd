@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
+<<<<<<< HEAD
 import  './App.css';
 import Layout from './components/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder'
+=======
+import './App.css';
+import Output from './UserOutput';
+import Input from './UserInput';
+>>>>>>> e713201e9377267b495ead6502040d23c01dc7a7
 
 class App extends Component {
   state = {username: 'Gideon'}
@@ -14,6 +20,7 @@ class App extends Component {
   
   render() {
     return (
+<<<<<<< HEAD
       <div>
        
     <Layout>
@@ -21,6 +28,15 @@ class App extends Component {
 
     </Layout>
     
+=======
+      <div className="App">
+  
+        <Input  changed={this.changeUsername}/>
+        <Output userName={this.state.username}  />
+        <Output userName={this.state.username}   />
+        <Output userName='obinim'   />
+        
+>>>>>>> e713201e9377267b495ead6502040d23c01dc7a7
       </div>
     );
   }
