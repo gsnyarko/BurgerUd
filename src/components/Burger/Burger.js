@@ -4,15 +4,31 @@ import classes from './Burger.module.css';
 import BurgerIngredients from './BurgerIngredients/BurgerIngredients'
 
 const Burger = (props) => {
-    return (
-        <div className={classes.Burger}>
-            <BurgerIngredients type='bread-top'></BurgerIngredients>
-            <BurgerIngredients type='meat'></BurgerIngredients>
-            <BurgerIngredients type='salad'></BurgerIngredients>
-            <BurgerIngredients type='bread-bottom'></BurgerIngredients>
-            
-        </div>
-    );
+    let TrasformedIngr = Object.keys(props.ingredients).map(item => {
+        return [...Array(props.ingredients[item])].map((_,index) => {
+            return <BurgerIngredients key={item + index} type={item} />
+        })
+    }).reduce((acc, el) =>  {
+        return acc.concat(el)
+    },[])
+
+    if (TrasformedIngr.length === 0) {
+        TrasformedIngr = <p>PLEASE INSERT INGREDIENTS</p>
+    } 
+
+
+        return (
+            <div className={classes.Burger}>
+                <BurgerIngredients type='bread-top'></BurgerIngredients>
+                {TrasformedIngr}
+                <BurgerIngredients type='bread-bottom'></BurgerIngredients>
+                
+            </div>
+        );
+
+    
+
+    
 };
 
 export default Burger;
