@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Burger from '../../components/Burger/Burger'
 import BuilControl from '../../components/Burger/Buildcontrols/buildcontrols'
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummery from '../../components/Burger/Odersummery/Odersummery'
+
 
 const INGRE_PRICES = {
     salad: 0.4,
@@ -21,6 +24,7 @@ class BurgerBuilder extends Component {
         },
         totalPrice: 4,
         purchasable: false,
+        purchasing: false,
     }
 
     handlePurchase = (ingred) => {
@@ -72,6 +76,18 @@ class BurgerBuilder extends Component {
         
         this.handlePurchase(updateIngredients );  // so we manage orders while we add ingre
     }
+    // se sto a comprar...
+    purchaseHandler = () => {
+        this.setState({purchasing: true});
+    }
+
+    closePurchasingHandler = () => {
+        this.setState({purchasing: false});
+    }
+
+    continuePurchasing = () => {
+        alert('You Buying');
+    }
 
 
     render() {
@@ -83,6 +99,14 @@ class BurgerBuilder extends Component {
 
         return (
             <div>
+                <Modal showModal={this.state.purchasing} closeBack={this.closePurchasingHandler} >
+                    <OrderSummery 
+                    ingredients={this.state.ingredients}
+                    cancella={this.closePurchasingHandler}
+                    continua={this.continuePurchasing}
+                    price={this.state.totalPrice} />
+                </Modal>
+                
                 <Burger ingredients= {this.state.ingredients}></Burger>
               
                 <BuilControl 
@@ -90,7 +114,9 @@ class BurgerBuilder extends Component {
                 ingredientsRemoved={this.removeIngredientsHandler}
                 disabled={disabledInfo}
                 purchasable={this.state.purchasable}
-                price={this.state.totalPrice} />
+                price={this.state.totalPrice}
+                bought={this.purchaseHandler}
+                 />
                 
             </div>
         );
