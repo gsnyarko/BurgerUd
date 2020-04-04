@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Burger.module.css';
-
+//import { withRouter } from 'react-router-dom';  to make props aware to the Burger component
 import BurgerIngredients from './BurgerIngredients/BurgerIngredients'
 
 const Burger = (props) => {
@@ -15,6 +15,7 @@ const Burger = (props) => {
     if (TrasformedIngr.length === 0) {
         TrasformedIngr = <p>PLEASE INSERT INGREDIENTS</p>
     } 
+    console.log(props)
 
 
         return (
@@ -30,5 +31,6 @@ const Burger = (props) => {
 
     
 };
-
 export default Burger;
+
+//export default withRouter(Burger);

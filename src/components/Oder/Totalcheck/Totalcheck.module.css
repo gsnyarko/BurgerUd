@@ -1,0 +1,12 @@
+.Totalcheck {
+    align-content: center;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+@media (min-width: 600px) {
+    .Totalcheck {
+        width: 500px;
+    }
+}

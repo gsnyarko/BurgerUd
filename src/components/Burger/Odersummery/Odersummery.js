@@ -21,8 +21,11 @@ class Odersummery extends Component {
             </ul>
             <p><strong>Your total price: {this.props.price.toFixed(2)}</strong></p>
             <p>Continue to chechout?</p>
+            <div style={{display: 'flex'}}>
             <Button btnType='Danger' Iclicked={this.props.cancella}>CANCEL</Button> 
-            <Button  btnType='Success' Iclicked={this.props.continua}>CONTINUE</Button>    
+            <Button  btnType='Success' Iclicked={this.props.continua}>CONTINUE</Button>     
+            </div>
+              
             </>
 
         );
