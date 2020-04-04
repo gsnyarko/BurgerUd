@@ -9,7 +9,8 @@ class Checkout extends Component {
         ingredients: null,
         totalprice: 0,  
     }
-    componentWillMount() {
+    
+    UNSAFE_componentWillMount() {
         const query = new URLSearchParams(this.props.location.search)
         const ingredients = {}
         let price = 0
@@ -41,7 +42,8 @@ class Checkout extends Component {
                 checkOutCan={this.checkOutCanHand}
                 checkOutCont={this.checkOutContHand}/>
                 <Route path={this.props.match.path + '/contact-data'} 
-                render={(props) => (<ContactData ingredients={this.state.ingredients} price={this.state.totalprice} {...props}/>)}/>
+                render={(props) => (
+                <ContactData ingredients={this.state.ingredients} price={this.state.totalprice} {...props}/>)}/>
                 {/* using the {..props} method to make the historr prop available to the 
                 component. An alternative would be the 'WithRouter' High order function  */}
             </div>
